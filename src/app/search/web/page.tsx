@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import WebSearchResults from '@/app/components/WebSearchResults';
 
 export default async function WebSearchPage({searchParams}: {searchParams: any}) {
   const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}`);
@@ -19,9 +20,8 @@ export default async function WebSearchPage({searchParams}: {searchParams: any})
   }
   return (
     <div>
-      { results && results.map((result: any) => 
-        <h1>{result.title}</h1>
-      )}
+      { results && <WebSearchResults results={data}/>
+      }
     </div>
   )
 }
