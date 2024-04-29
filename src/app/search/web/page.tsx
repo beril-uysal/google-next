@@ -3,7 +3,8 @@ import Link from 'next/link'
 import WebSearchResults from '@/app/components/WebSearchResults';
 
 export default async function WebSearchPage({searchParams}: {searchParams: any}) {
-  const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}`);
+  const startIndex = searchParams.start || 1;
+  const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&start=${startIndex}`);
   if (!res.ok) throw new Error('Something went wrong!');
   const data = await res.json();
   const results = data.items;
