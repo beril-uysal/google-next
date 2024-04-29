@@ -4,6 +4,7 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { BsFillMicFill } from 'react-icons/bs'
 import { RxCross2 } from 'react-icons/rx'
 import { useSearchParams, useRouter } from 'next/navigation'
+import SearchHeaderOptions from './SearchHeaderOptions'
 
 export default function SearchBox() {
         const searchParams = useSearchParams()
